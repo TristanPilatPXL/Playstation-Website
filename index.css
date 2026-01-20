@@ -3,8 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'SST', sans-serif;
-
-
 }
 
 body {
@@ -27,54 +25,68 @@ body {
     height: 6vh;
 }
 
-.search-icon{
-    flex: 0;
-    justify-content: flex-end;
-    display: flex;
-    height: 1vh;
-    width: auto;
-
-
-}
-.nav{
+/* nav en form over de volle breedte */
+.nav {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 0.5rem;
+    width: 100%;               /* volle breedte */
 }
+
 nav .nav-links {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
-
 nav form {
     display: flex;
     align-items: center;
-
-    gap: 2rem;
+    gap: 1rem;
     margin: 0;
     padding: 0;
+    width: 100%;               /* nodig voor auto-margin */
 }
+
 nav form .form-group {
     border: none;
-    margin: 0;
     padding: 0;
+    margin-left: auto;
+
 }
-nav form select {
+
+/* duw alleen de search-group naar de uiterste rechterkant */
+nav form .form-group.search {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
+
+.search-icon {
+    display: flex;
+    height: 1.5rem;
+    width: auto;
+    justify-content: flex-end;
+    margin-left: 80rem;
+
+}
+
+/* (optioneel) select bij search verbergen of minimaliseren */
+nav form .form-group.search select {
+    display: none; /* of: min-width: 0; padding: 0; */
+}
+
+/* optioneel: select zonder rand */
 form select {
     border: none;
     outline: none;
     background: transparent;
 }
 
-.main-image{
-    background-image: url("assets/deel-1/hero-banner.png");
-    background-size: contain;   /* hele afbeelding tonen */
-    background-position: block-start;
-    background-repeat: no-repeat;
-    height: 732px;
+.main-image {
+    background: url("assets/deel-1/hero-banner.png") center/cover no-repeat;
+    height: 734px;
     width: 100%;
     color: white;
     font-size: 1.5rem;
@@ -92,7 +104,6 @@ form select {
     margin-top:2rem;
     background: orangered;
     border-radius: 4rem;
-
 }
 .games{
     margin-top: 2rem;
@@ -100,24 +111,22 @@ form select {
 }
 
 .cards {
-
     display: flex;
     align-items: center;
     height: 10rem;
     justify-content: center;
     gap: 1rem;
-    flex-wrap: nowrap; /* of wrap als je wilt laten doorlopen */
+    flex-wrap: nowrap;
 }
 .card {
     width: 15rem;
     height: auto;
     border: 5px white;
     border-radius: 1rem;
-    overflow: hidden; /* voorkomt dat de img uitsteekt */
+    overflow: hidden;
     filter: brightness(0.8);
     transition: border 0.5s, filter 0.5s, padding 0.5s, border-radius 0.5s;
 }
-
 .card img, .month-cards img {
     border-radius: 0.5rem;
 }
@@ -126,21 +135,16 @@ form select {
     border-radius: 1rem;
     filter: brightness(100%);
     padding: 5px;
-
-
 }
 
-.card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* vult de hele kaart; kan iets croppen */
-    display: block;
-}
+.card-image,
 .card-image-2{
     width: 100%;
     height: 100%;
-    object-fit: cover; /* vult de hele kaart; kan iets croppen */
+    object-fit: cover;
     display: block;
+}
+.card-image-2{
     overflow: hidden;
 }
 
@@ -151,11 +155,10 @@ form select {
 }
 .nogbanner-img {
     position: absolute;
-
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill; /* hele afbeelding, wel balken indien aspect mismatch */
+    object-fit: fill;
 }
 .nogbanner .content {
     position: relative;
@@ -181,12 +184,21 @@ form select {
     margin-top:2rem;
     background: white;
     border-radius: 4rem;
-
 }
-.month-cards{
-
-    margin-top: 20rem;
-    border: transparent 5px;
-    border-radius: 10rem;
+/* vaste maten voor de “THIS MONTH” kaarten */
+.month-cards {
+    margin-top: 22rem;
+    width: 35rem;      /* kies een vaste breedte */
+    height: 20rem;     /* kies een vaste hoogte */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    flex: 0 0 auto;
 }
 
+.month-cards img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* vult het vlak, kan croppen */
+    display: block;
+    border-radius: 0.75rem;
+}
